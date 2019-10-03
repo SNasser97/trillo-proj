@@ -13,6 +13,12 @@
 	align-items: center;
 	justify-content: center;
     
+    @media only screen and (max-width: $bp-smallest) { // em
+		order:1;
+		flex: 0 0 100%;
+		background-color: var(--colour-grey-light-2);
+	}
+
 	&__input {
 		font-family: inherit;
 		font-size: inherit;
@@ -24,10 +30,18 @@
 		width: 90%; 
 		transition: all .2s;
 		margin-right: -3.25rem;
+
+		@media only screen and (max-width: $bp-smallest) { // em
+				width: 85%;
+		}
+
 		&:focus {
 			outline: none;
 			width: 100%;
 			background-color: var(--colour-grey-light-2);
+			@media only screen and (max-width: $bp-smallest) { // em
+				width: 95%;
+			}
 		}
 		&::-webkit-input-placeholder {
 			font-weight: 100;
@@ -120,11 +134,21 @@
 	font-size: 1.4rem;
 	list-style: none;
 	margin-top: 3.5rem;
-	
+	@media only screen and (max-width: $bp-med) { // em
+		display: flex;
+		margin: 0;
+	}
 	&__item {
 		position: relative;
 		&:not(:last-child) {
 			margin-bottom: .5rem;
+			@media only screen and (max-width: $bp-med) { // em
+				margin: 0;
+			}
+		}
+
+		@media only screen and (max-width: $bp-med) { // em
+			flex: 1;
 		}
 	}
 	&__item::before {
@@ -164,6 +188,16 @@
 		
 		display: flex;
 		align-items: center;
+
+		@media only screen and (max-width: $bp-med) { // em
+			justify-content: center;
+			padding: 2rem;
+		}
+
+		@media only screen and (max-width: $bp-small) { // em
+			flex-direction: column;
+			padding: 1.5rem .5rem;
+		}
 	}
 	
 	&__icon {
@@ -172,6 +206,12 @@
 		margin-right: 2rem;
 		// fill used for icon svg colour
 		fill: currentColor; // colour of parent element
+		@media only screen and (max-width: $bp-small) { // em
+			height: 1.5rem;
+			width: 1.5rem;
+			margin-right:0;
+			margin-bottom: 7px;
+		}
 	}
 }
 
@@ -182,6 +222,9 @@
 	color:var(--colour-grey-light-4);
 	text-align: center;
 	padding: 2.5rem;
+	@media only screen and (max-width: $bp-med) { // em
+		display: none;
+	}
 }
 
 /////////////////////////////////////////////////
@@ -206,18 +249,43 @@
 	align-items: center;
 	border-bottom: var(--line);
 
+	position: relative;
+
+	@media only screen and (max-width: $bp-smallest) {
+		flex-direction: column;	
+	}
 	&__heading{
 		font-size: 2.25rem;
 		font-weight: 300;
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		padding: 1.5rem 3rem;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: 1.8rem;
+			padding: 1.25rem 2rem;
+		}
+		
+		@media only screen and (max-width: $bp-smallest) {
+			font-size: 2.5rem;
+			width: 75%;
+			position: absolute;
+			left:0;
+			top:0;
+		}
 	}
+
+
 
 	&__stars {
 		margin-right: auto;
 		display: flex;
-
+		@media only screen and (max-width: $bp-smallest) {
+			justify-content: center;
+			margin:0;
+			padding: 1.5rem;
+			background-color: var(--colour-primary); //var(--colour-primary)
+		}
 	}
 	
 	&__icon-star,
@@ -225,7 +293,16 @@
 		width: 1.75rem;
 		height:1.75rem;
 		fill:var(--colour-primary);
+		
 	}
+
+	&__icon-star {
+		@media only screen and (max-width: $bp-smallest) {
+			fill:#fff;
+		}
+	}
+
+
 	&__icon-location {
 		margin-right: .5rem;
 	}
@@ -234,7 +311,15 @@
 		font-size: 1.2rem;
 		display: flex;
 		align-items: center;
-		
+
+		@media only screen and (max-width: $bp-smallest) {
+			order:-10;
+			margin-bottom: 2rem;
+			font-size: 1.6rem;
+			position: absolute;
+			top:6rem;
+			left:2rem;
+		}
 	}
 	&__rating {
 		background-color: var(--colour-primary);
@@ -247,20 +332,48 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+
+		@media only screen and (max-width: $bp-small) {
+			padding: 0 1.5rem;
+		}
+		
 	}
 
 	&__rating-average{
 		font-size: 2.25rem;
 		font-weight: 300;
 		margin-bottom: -3px;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: 1.8rem;
+		}
+		@media only screen and (max-width: $bp-smallest) {
+			font-size: 2rem;
+		}
 	}
 
 	&__rating-count {
 		font-size: .8rem;
 		text-transform: uppercase;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: .5rem;
+		}
+		@media only screen and (max-width: $bp-smallest) {
+			font-size: 1rem;
+			padding-bottom: 1.5rem;
+		}
 	}
 
-
+	// ADDITIONAL SMALL SCREEN STYLES (BELOW 500)
+	&__rating, 
+	&__stars, {
+		@media only screen and (max-width:$bp-smallest) {
+			width: 25%;
+			margin-left: auto;
+		}
+	}
+	
 }
 
 /////////////////////////////////////////////////
@@ -276,12 +389,14 @@
 	background-color: transparent;
 	cursor: pointer;
 	transition: all .2s;
-	
+	@media only screen and (max-width: $bp-small) { // em
+		align-self: center;
+	}
 	& span {
 		margin-left: 3px;
 		transition: margin-left .2s;
 	}
-
+	
 	&:hover {
 		color:var(--colour-grey-dark-1);
 
@@ -357,7 +472,7 @@
 	}
 
 	&__friends {
-		
+		display: flex;	
 	}
 
 	&__photo {
@@ -367,7 +482,7 @@
 		border-radius: 50%;
 		border: 3px solid #fff;
 		&:not(:last-child) {
-			margin-right: -1.5rem;
+			margin-right: -2rem;
 		}
 	}
 }
@@ -384,7 +499,10 @@
 	position: relative;
 	overflow: hidden;
 	
-	
+	@media only screen and (max-width: $bp-med) { // em
+		padding: 2rem;
+		margin-bottom: 3rem;
+	}
 	&__text {
 		margin-bottom: 2rem;
 		position: relative;
@@ -442,6 +560,11 @@
 .cta {
 	padding: 3.5rem 0;
 	text-align: center;
+	
+	@media only screen and (max-width: $bp-med) { // em
+		padding: 2.5rem 0;
+		
+	}
 
 	&__booknow {
 		text-transform: uppercase;
