@@ -15,24 +15,24 @@ Grey dark 2: #777
 Grey dark 3: #999
 
 */
-:root { // similar to html but higher specificity
-	--colour-primary: #eb2f64;
-	--colour-primary-light: #FF3366;
-	--colour-primary-dark: #BA265D;
-	// can delcare css props without Sass
-	--colour-grey-light-1: #faf9f9;
-	--colour-grey-light-2: #f4f2f2;
-	--colour-grey-light-3: #f0eeee;
-	--colour-grey-light-4: #ccc;
 
-	--colour-grey-dark-1: #333;
-	--colour-grey-dark-2: #777;
-	--colour-grey-dark-3: #999;
+// SASS vars used due to CSS vars not supported in IE11
+// Change colour values in here
+$colour-primary: #0ea9de;
+$colour-primary-light: #00e7ff;
+$colour-primary-dark: #005a9a;
+$colour-grey-light-1: #faf9f9;
+$colour-grey-light-2: #f4f2f2;
+$colour-grey-light-3: #f0eeee;
 
-	--shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
-	--shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
-	--line: 1px solid var(--colour-grey-light-2);
-}
+$colour-grey-light-4: #ccc;
+$colour-grey-dark-1: #333;
+$colour-grey-dark-2: #777;
+$colour-grey-dark-3: #999;
+
+$shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+$shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
+$line: 1px solid $colour-grey-light-2;
 
 // MEDIA SCREEN SIZE SASS VARIABLES
 $bp-largest: 75em; 	 // 1200px/16px 
@@ -40,9 +40,6 @@ $bp-large: 68.75em;  // 1100/16px
 $bp-med: 56.25em; 	 // 900/16px 
 $bp-small: 37.5em;	 // 600/16px 
 $bp-smallest: 31.25em;	 // 600/16px 
-
-
-
 
 
 * {
@@ -65,9 +62,9 @@ body{
 	font-family: "Open Sans", sans-serif;
 	font-weight: 400;
 	line-height: 1.6;
-	color: var(--colour-grey-dark-2);
+	color: $colour-grey-dark-2;
 	background-image: linear-gradient(to right bottom,
-		var(--colour-primary-light), var(--colour-primary-dark));
+		$colour-primary-light, $colour-primary-dark);
 	background-size: cover;
 	background-repeat: no-repeat;
 

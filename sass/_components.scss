@@ -1,8 +1,8 @@
 /////////////////////////////////////////////////
 // LOGO
 .logo {
-	height: 3.25rem;
-	margin-left: 2rem;
+	height: 5.75rem;
+	margin-left: 1rem;
 }
 
 /////////////////////////////////////////////////
@@ -16,13 +16,13 @@
     @media only screen and (max-width: $bp-smallest) { // em
 		order:1;
 		flex: 0 0 100%;
-		background-color: var(--colour-grey-light-2);
+		background-color: $colour-grey-light-2;
 	}
 
 	&__input {
 		font-family: inherit;
 		font-size: inherit;
-		background-color: var(--colour-grey-light-2);
+		background-color: $colour-grey-light-2;
 		border: none;
 		color: inherit;
 		padding: .7rem 2rem;
@@ -38,23 +38,23 @@
 		&:focus {
 			outline: none;
 			width: 100%;
-			background-color: var(--colour-grey-light-2);
+			background-color: $colour-grey-light-2;
 			@media only screen and (max-width: $bp-smallest) { // em
 				width: 95%;
 			}
 		}
 		&::-webkit-input-placeholder {
 			font-weight: 100;
-			color: var(--colour-grey-light-4);
+			color: $colour-grey-light-4;
 		}
 	} 
  
 	&__input:focus + &__button {
-		background-color: var(--colour-grey-light-2);
+		background-color: $colour-grey-light-2;
 	} 
 	&__button {  
 		border:none;
-		background-color: var(--colour-grey-light-2);
+		background-color: $colour-grey-light-2;
 		
 		&:focus {
 			outline: none;
@@ -66,7 +66,7 @@
 	&__icon {
 		height: 2rem;
 		width: 2rem;
-		fill: var(--colour-grey-dark-3);
+		fill: $colour-grey-dark-3;
 	} 
 }
 
@@ -86,7 +86,7 @@
 	}
 
 	& > *:hover {
-		background-color: var(--colour-grey-light-2);
+		background-color: $colour-grey-light-2;
 
 	}
 	
@@ -99,7 +99,7 @@
 	&__icon {
 		height: 2.25rem;
 		width: 2.25rem;
-		fill: var(--colour-grey-dark-2);
+		fill: $colour-grey-dark-2;
 	}
   
 	&__notification {
@@ -107,7 +107,7 @@
 		height: 1.75rem;
 		width: 1.75rem;
 		border-radius:50%;
-		background-color: var(--colour-primary);
+		background-color: $colour-primary;
 		color:#fff;
 		position: absolute;
 		top:1.5rem;
@@ -158,7 +158,7 @@
 		left:0;
 		height: 100%;
 		width: 3px;
-		background-color: var(--colour-primary);
+		background-color: $colour-primary;
 	    transform: scaleY(0);
 	    transition: transform .2s, 
 	    			width .4s cubic-bezier(1,0,0,1) .2s,
@@ -167,7 +167,7 @@
 
 	//active
 	&__item:active::before {
-		background-color: var(--colour-primary-light);
+		background-color: $colour-primary-light;
 	}
 	//hover 
 	&__item:hover::before,
@@ -178,7 +178,7 @@
 
 	&__link:link,
 	&__link:visited {
-		color: var(--colour-grey-light-1);
+		color: $colour-grey-light-1;
 		text-decoration: none;
 		text-transform: uppercase;
 		display: block;
@@ -219,7 +219,7 @@
 // LEGAL TEXT
 .legal {
 	font-size: 1.2rem;
-	color:var(--colour-grey-light-4);
+	color:$colour-grey-light-4;
 	text-align: center;
 	padding: 2.5rem;
 	@media only screen and (max-width: $bp-med) { // em
@@ -232,13 +232,50 @@
 
 .gallery {
 	display: flex;
-	
+
+
 	&__photo {
 		width: 100%;
 		// make img block to remove space underneath
 		display: block; 
 		
 	}
+	&__item {
+		position: relative;
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	&__caption {
+		font-size: 1.6rem;
+		color:red;
+		background-color: rgba(0,0,0,.75);
+		position: absolute;
+		display: inline-block;
+		bottom:0;
+		right:10rem;
+		height: 100%;
+		width: 100%;
+		padding-left:.8rem;
+		opacity: 0;
+		transition: all .2s ;
+	}
+	&__caption::before {
+			content: "";
+			position: absolute;
+		    top: 0;
+		    left: 0;
+		    height: 100%;
+		    width: 4px;
+			background-color: $colour-primary;
+	}
+	&__item:hover  &__caption {
+		    right:0;
+		    opacity: 1;
+	}
+
+
 }
 
 /////////////////////////////////////////////////
@@ -247,7 +284,7 @@
 .overview {
 	display: flex;
 	align-items: center;
-	border-bottom: var(--line);
+	border-bottom: $line;
 
 	position: relative;
 
@@ -284,7 +321,8 @@
 			justify-content: center;
 			margin:0;
 			padding: 1.5rem;
-			background-color: var(--colour-primary); //var(--colour-primary)
+			background-color:transparent; //$colour-primary
+			border:1px solid $colour-primary;
 		}
 	}
 	
@@ -292,13 +330,13 @@
 	&__icon-location {
 		width: 1.75rem;
 		height:1.75rem;
-		fill:var(--colour-primary);
+		fill:$colour-primary;
 		
 	}
 
 	&__icon-star {
 		@media only screen and (max-width: $bp-smallest) {
-			fill:#fff;
+			fill:$colour-primary;
 		}
 	}
 
@@ -322,7 +360,7 @@
 		}
 	}
 	&__rating {
-		background-color: var(--colour-primary);
+		background-color: $colour-primary;
 		color:#fff;
 		margin-left: 3rem;
 		padding: 2.25rem;
@@ -381,7 +419,7 @@
 
 .btn-inline {
 	border: none;
-	color: var(--colour-primary);
+	color: $colour-primary;
 	font-size: inherit;
 	border-bottom: 1px solid currentColor;
 	padding-bottom: 2px;
@@ -398,7 +436,7 @@
 	}
 	
 	&:hover {
-		color:var(--colour-grey-dark-1);
+		color:$colour-grey-dark-1;
 
 		span {
 			margin-left: 8px;
@@ -425,8 +463,8 @@
 	list-style:none;
 	margin: 3rem 0;
 	padding: 3rem 0;
-	border-top: var(--line);
-	border-bottom: var(--line);
+	border-top: $line;
+	border-bottom: $line;
 
 	display: flex;
 	flex-wrap: wrap;
@@ -443,16 +481,21 @@
 			margin-right: .7rem;
 
 			//Old browsers
-			// background-image: url(../img/chevron-thin-right.svg);
-			// background-size: cover;
-
-			//New browser - masks
+			background-image: url(../img/chevron-thin-right.svg);
+			background-size: cover;
+			
+			// New browser - masks
 			// masks - defines area where we can look thru an element
-			background-color: var(--colour-primary);
-			-webkit-mask-image: url(../img/chevron-thin-right.svg);
-			-webkit-mask-size: cover;
-			mask-image: url(../img/chevron-thin-right.svg);
-			mask-size: cover;
+			@supports(-webkit-mask-image: url()) or (mask-image:url()) {
+				background-color: $colour-primary;
+				-webkit-mask-image: url(../img/chevron-thin-right.svg);
+				-webkit-mask-size: cover;
+				mask-image: url(../img/chevron-thin-right.svg);
+				mask-size: cover;
+
+				background-image: none;
+			}
+			
 		}
 	}
 }
@@ -462,7 +505,7 @@
 
 .recommend {
 	font-size: 1.3rem;
-	color:var(--colour-grey-dark-4);
+	color: $colour-grey-dark-3;
 	
 	display: flex;
 	align-items: center;
@@ -493,7 +536,7 @@
 
 .review {
 	background-color: #fff;
-	box-shadow: var(--shadow-light);
+	box-shadow: $shadow-light;
 	padding: 3rem;
 	margin-bottom: 3.5rem;
 	position: relative;
@@ -536,7 +579,7 @@
 	}
 	&__rating {
 		font-size: 2.2rem;
-		color:var(--colour-primary);
+		color:$colour-primary;
 	}
 	&::before {
 		content:"\201C";
@@ -547,7 +590,7 @@
 		top:-2.75rem;
 		left:-1rem;
 		line-height: 1;
-		color:var(--colour-grey-light-2);
+		color:$colour-grey-light-2;
 		z-index: 1;
 	}
 }
@@ -585,8 +628,8 @@
 	text-transform: uppercase;
 	border-radius: 100px;
 	background-image: linear-gradient(to right,
-		var(--colour-primary-light),
-		var(--colour-primary-dark));
+		$colour-primary-light,
+		$colour-primary-dark);
 	color: #fff;
 	position: relative;
 	overflow: hidden;
@@ -614,8 +657,8 @@
 	}
 	&:hover {
 		background-image: linear-gradient(to left,
-		var(--colour-primary-light),
-		var(--colour-primary-dark));
+		$colour-primary-light,
+		$colour-primary-dark);
 	}
 
 	&:hover &__visible {
