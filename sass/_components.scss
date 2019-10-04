@@ -12,7 +12,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-    
+    position: relative;
     @media only screen and (max-width: $bp-smallest) { // em
 		order:1;
 		flex: 0 0 100%;
@@ -685,7 +685,7 @@
 
 	}
 	&:focus {
-		outline:none;
+		outline:none; 
 		animation: pulsate 1s infinite;
 	}
 }
@@ -705,5 +705,68 @@
 	100% {
 		transform:scale(1);
 		box-shadow: none;
+	}
+}
+
+/////////////////////////////////////////////////
+// HOTEL RESULTS
+
+.results {
+	position: absolute;
+	z-index: 999;
+
+	top:3.5rem;
+	background-color: #fff;
+	width: 95%;
+	height: 40rem;
+	font-size: 2rem;
+	// padding: 0 2rem;
+	box-shadow: $shadow-med;
+	overflow-y: scroll;
+	&__details {
+		display: flex;
+		align-items: center;
+		border-bottom: $line;
+		// margin-top: .8rem;
+		padding: 1rem;
+		transition: all .1s;
+		justify-content: space-around;
+		&:hover {
+			background-color: $colour-grey-light-2;
+		}
+	}
+	&__img-box {		
+		// height: 4rem;
+		// width: 4rem;	
+	}
+	&__img {
+		height: 10rem;
+		width: 10rem;
+		border-radius: 50%;
+	}
+
+	&__info {
+		font-size: inherit;
+	}
+	&__name {
+
+	}
+	&__location {
+		font-size: 1.5rem;
+		font-weight: 300;
+	}
+
+	&__stars {
+	}
+	&__icon {
+		height: 1.55rem;
+		width: 1.55rem;
+		fill:$colour-primary;
+	}
+
+	&__rating {
+		font-size: 3rem;
+		font-weight: 300;
+		color: $colour-primary;
 	}
 }
