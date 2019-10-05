@@ -122,7 +122,9 @@
 	&__user {
 		display: flex;
 		align-items: center;
+		position: relative;
 	}
+	
 	&__user-photo {
 		height: 3.75rem;
 		border-radius:50%; 
@@ -240,7 +242,13 @@
 		width: 100%;
 		// make img block to remove space underneath
 		display: block; 
-		
+		transition: transform .4s;
+		backface-visibility: hidden;
+		filter: blur(1px);
+
+		@media only screen and  (max-width: $bp-med) {
+			filter: none;
+		}
 	}
 	&__item {
 		position: relative;
@@ -251,7 +259,6 @@
 	}
 
 	&__caption {
-		color:red;
 		background-color: rgba(0,0,0,.75);
 		position: absolute;
 		display: inline-block;
@@ -292,8 +299,10 @@
 		    width:100%;
 		    opacity: 1;
 	}
-
-
+	&__item:hover  &__photo {
+			filter: none;
+		    transform: scale(1.4);
+	}
 }
 
 /////////////////////////////////////////////////
@@ -710,6 +719,21 @@
 	}
 }
 
+@keyframes pulsate-2 {
+	0%{
+		transform:scale(0.9);
+		box-shadow: none;
+	}
+	50% {
+		transform:scale(1);
+		box-shadow: 0 1rem 4rem rgba(0,0,0,.25);
+	}
+	100% {
+		transform:scale(0.9);
+		box-shadow: none;
+	}
+}
+
 /////////////////////////////////////////////////
 // HOTEL RESULTS
 
@@ -914,6 +938,73 @@
 /////////////////////////////////////////////////
 // USER OPTION
 
+.options {
+	position: absolute;
+	z-index: 999;
+	top:7rem;
+	right: 0;
+	background-color: #fff;
+	width: 20rem;
+	box-shadow: $shadow-med;
+	border-radius: 2px;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .2s;
+	@media only screen and (max-width: $bp-smallest) {
+		top:6.5rem;
+	}
+
+	&__list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		font-weight: 300;
+	}
+
+	&__item{
+		padding: 1.5rem;
+		width: 100%;
+		border-bottom: $line;
+		&:focus {
+		outline:none;
+		animation: pulsate 1s infinite;
+		}
+	}
+
+	&__link,
+	&__link:visited,
+	&__link:active{
+		color:$colour-grey-dark-2;
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		transition: transform .2s cubic-bezier(1,.79,0,1.46);
+
+		
+	}
+	&__item:hover {
+		background-color: $colour-grey-light-2;
+	}
+
+	&__item:hover &__link {
+		transform:translateX(1.2rem);
+	}
+	
+	&__icon {
+		height: 2rem;
+		width: 2rem;
+		fill:rgba($colour-primary, .8);
+		margin-right: 3rem;
+	}
+
+}
+//display on hover
+.user-nav {
+	&__user:hover .options {
+		visibility: visible;
+		opacity: 1;
+	}	
+}
 
 
 
