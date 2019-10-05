@@ -43,6 +43,24 @@ $bp-med: 56.25em; 	 // 900/16px
 $bp-small: 37.5em;	 // 600/16px 
 $bp-smallest: 31.25em;	 // 600/16px 
 
+// CUSTOM SCROLL FOR SITE ELEMENTS
+@mixin scrollStyle($class) {
+	#{$class}::-webkit-scrollbar {
+	    width: .8rem;
+	}
+	#{$class}.results::-webkit-scrollbar-track {
+	    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.1); 
+	    border-radius: 10px;
+	    height: 3px;
+	}
+	#{$class}.results::-webkit-scrollbar-thumb {
+	    border-radius: 10px;
+	    background-color: #fff;
+	    background-image: none;
+	    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.6); 
+	}
+}
+
 
 * {
 	margin: 0;

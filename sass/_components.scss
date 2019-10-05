@@ -42,6 +42,7 @@
 			@media only screen and (max-width: $bp-smallest) { // em
 				width: 95%;
 			}
+
 		}
 		&::-webkit-input-placeholder {
 			font-weight: 100;
@@ -718,11 +719,21 @@
 	top:3.5rem;
 	background-color: #fff;
 	width: 95%;
-	height: 40rem;
-	font-size: 2rem;
+	max-height: 30rem;
+	font-size: 1.6rem;
 	// padding: 0 2rem;
 	box-shadow: $shadow-med;
 	overflow-y: scroll;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .2s;
+	@media only screen and (max-width:$bp-small) {
+		width: 100%;
+		max-height: 25rem;
+	}
+	@media only screen and (max-width:$bp-smallest) {
+		width: 90%;
+	}
 	&__details {
 		display: flex;
 		align-items: center;
@@ -731,6 +742,9 @@
 		padding: 1rem;
 		transition: all .1s;
 		justify-content: space-around;
+		@media only screen and (max-width:$bp-small) {
+			width: 100%;
+		}
 		&:hover {
 			background-color: $colour-grey-light-2;
 		}
@@ -740,33 +754,85 @@
 		// width: 4rem;	
 	}
 	&__img {
-		height: 10rem;
-		width: 10rem;
+		height: 7.5rem;
+		width: 7.5rem;
 		border-radius: 50%;
+		@media only screen and (max-width: $bp-small) {
+			height: 6rem;
+			width: 6rem;
+		}
 	}
 
 	&__info {
 		font-size: inherit;
+		flex:1;
+		margin-left: 1rem;
+		@media only screen and (max-width: $bp-small) {
+			font-size: 1.4rem;
+		}
+		
 	}
 	&__name {
 
 	}
 	&__location {
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 		font-weight: 300;
 	}
 
 	&__stars {
+		flex:1;
+		@media only screen and (max-width:$bp-smallest) {
+			margin-left: 1rem;
+		}
 	}
 	&__icon {
-		height: 1.55rem;
-		width: 1.55rem;
+		height: 1.5rem;
+		width: 1.5rem;
 		fill:$colour-primary;
+		@media only screen and (max-width: $bp-small) {
+			height: 1.2rem;
+			width: 1.2rem;
+		}
 	}
 
 	&__rating {
-		font-size: 3rem;
+		font-size: 2rem;
 		font-weight: 300;
 		color: $colour-primary;
+		@media only screen and (max-width: $bp-small) {
+			font-size: 1.6rem;
+		}
 	}
+}
+// display .results div on input click/focus
+.search {
+&__input:focus ~ .results {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+
+@include scrollStyle(".results");
+/////////////////////////////////////////////////
+// SCROLL BAR - PAGE
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.1); 
+    border-radius: 10px;
+    height: 3px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    // border-radius: 10px;
+    background-image: linear-gradient(to bottom right, 
+    	$colour-primary, 
+    	$colour-primary-dark);
+
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3); 
 }
