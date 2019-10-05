@@ -97,6 +97,7 @@
 		position: relative;
 	}
 
+
 	&__icon {
 		height: 2.25rem;
 		width: 2.25rem;
@@ -723,7 +724,8 @@
 	font-size: 1.6rem;
 	// padding: 0 2rem;
 	box-shadow: $shadow-med;
-	overflow-y: scroll;
+	overflow-y: auto;
+	border-radius: 2px;
 	visibility: hidden;
 	opacity: 0;
 	transition: all .2s;
@@ -805,6 +807,8 @@
 		}
 	}
 }
+@include scrollStyle(".results");
+
 // display .results div on input click/focus
 .search {
 &__input:focus ~ .results {
@@ -813,8 +817,106 @@
 	}
 }
 
+/////////////////////////////////////////////////
+// RECENT PINNED
 
-@include scrollStyle(".results");
+.hoverbox {
+	position: absolute;
+	top:7rem;
+	left:-10rem;
+	z-index: 999;
+	// padding: .8rem;
+	background-color: #fff;
+	width: 30rem;
+	max-height: 20rem;
+	font-size: 1.4rem;
+	overflow-y:auto;
+	box-shadow: $shadow-dark-2;
+	border-radius: 2px;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .2s;
+	&__pinned-details {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		padding: 2rem .6rem;
+		border-bottom: $line;
+		transition: all .1s;
+		&:hover {
+			background-color: $colour-grey-light-2;
+		}
+	}
+	&__header {
+		text-align: center;
+		padding: .8rem 0;
+		background-color: $colour-primary;
+		color:#fff;
+		font-weight: 600;
+		border-bottom: $line;
+		font-size: 1.8rem;
+	}
+	&__img-box {
+		height: 4.5rem;
+		width: 4.5rem;
+	}
+	&__img {
+		height: 4.5rem;
+		width: 4.5rem;
+		border-radius: 50%;
+		margin-right: .5rem;
+	}
+	&__user-info{
+	   
+	}
+	&__msg {
+		font-size: 1.2rem;
+		font-weight: 300;
+	}
+
+	&__user-date {
+		margin-left: .8rem;
+		width: 6rem;
+		font-size: .95rem;
+		font-weight: 300;
+	}
+
+	&__btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 1.5rem;
+	}
+	&__btn .btn-inline {
+		display: block;
+		text-decoration: none;
+	}
+}
+
+@include scrollStyle(".hoverbox");
+
+/////////////////////////////////////////////////
+// RECENT MESSAGES
+.hoverbox--msg {
+	left:-13rem;
+}
+
+// display on hover
+.user-nav{
+	&__icon-box:hover .hoverbox {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+
+
+/////////////////////////////////////////////////
+// USER OPTION
+
+
+
+
 /////////////////////////////////////////////////
 // SCROLL BAR - PAGE
 
